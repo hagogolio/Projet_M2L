@@ -2,7 +2,7 @@
 ob_start();
 require_once 'include/navbar.php';
 ?>
-
+<!-- PAGE ADMIN -->
 <body class="connect">
 <div class="container">
 
