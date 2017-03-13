@@ -14,8 +14,8 @@ require_once'include/header.php';
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Administration
         <ul class='dropdown-menu'>
           <li><a href='admin.php'>Demande Formations</a></li>
-          <li><a href='formadmin.php'>Gestion Utilisateurs</a></li>
-          <li><a href='#'>Gestion Formation</a></li>
+          <li><a href='useradmin.php'>Gestion Utilisateurs</a></li>
+          <li><a href='formadmin.php'>Gestion Formation</a></li>
         </ul>
       </li>     ";?> 
     

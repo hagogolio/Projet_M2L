@@ -36,6 +36,14 @@ $db = new DBConnection();
     return $result;
 };
 
+function afficheruser(){
+$db = new DBConnection();
+    $sth=$db->prepare("SELECT * from employe");
+    $sth->execute();
+    $result= $sth->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+};
+
 function choixformation($id, $idform,$credit){
 
     $db = new DBConnection();
@@ -170,7 +178,24 @@ $db = new DBConnection();
     $result=$sth->fetchAll(PDO::FETCH_OBJ);
     return $result;
 }
-
+function modifuser($id){
+$db = new DBConnection();
+    $sth=$db->prepare("SELECT * from employe  where idEmploye = $id");
+     $sth->execute();
+    $result=$sth->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+}
+function modifuser2($nom,$mdp,$credit,$id){
+    $db = new DBConnection();
+    $sql="UPDATE employe set nom=:nom,mdp=:mdp,credit=:credit where idEmploye=:idEmploye";
+    $stmt = $db->prepare($sql);
+    $stmt->BindValue(':nom',$nom);
+    $stmt->BindValue(':mdp', $mdp);
+    $stmt->BindValue(':credit', $credit);
+    $stmt->BindValue(':idEmploye', $id);
+    $result = $stmt->execute();
+    return $result;
+}
 function presta()
 {
     $db = new DBConnection();
@@ -180,4 +205,10 @@ function presta()
     $result=$stmt->fetchAll(PDO::FETCH_OBJ);
     return $result;
 
+}
+function  ajoutuser()
+{
+    $db = new DBConnection();
+    $sql="INSERT INTO employe (nom,mdp,Credit,) values (:nom,:typeEmploye,:mdp,:credit)"
+    
 }
