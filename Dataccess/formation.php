@@ -206,9 +206,15 @@ function presta()
     return $result;
 
 }
-function  ajoutuser()
+function  ajoutuser($nom,$mdp,$credit,$type)
 {
     $db = new DBConnection();
-    $sql="INSERT INTO employe (nom,mdp,Credit,) values (:nom,:typeEmploye,:mdp,:credit)"
-    
+    $sql="INSERT INTO employe (nom,mdp,typeEmploye,Credit) values (:nom,:mdp,:typeEmploye,:credit)";
+    $stmt = $db->prepare($sql);
+    $stmt->BindValue(':nom',$nom);
+    $stmt->BindValue(':mdp', $mdp);
+    $stmt->BindValue(':typeEmploye',$type);
+    $stmt->BindValue(':credit', $credit);
+    $result = $stmt->execute();
+    return $result;
 }

@@ -38,7 +38,7 @@ require_once 'include/navbar.php';
 
 
 
-      ob_end_flush();       
+     
 ?>
 
     </tbody>
@@ -51,33 +51,31 @@ require_once 'include/navbar.php';
         <th>Nom du compte</th>
         <th>mot de passe</th>
         <th>Crédit</th>
-   
-          <th></th>
+        <th>Type</th>
       </tr>
     </thead>
     <tbody>
-    <td><input type='text' name='critere1'/> </td>
-    <td><input type='text' name='critere2'/> </td>
-    <td><input type='text' name='critere3'/> </td>
+    <td><input type='text' name='critere1' required="required"/> </td>
+    <td><input type='text' name='critere2' required="required"/> </td>
+    <td><input type='number' name='critere3'  step="8" value="0" min="0" max="9999" required="required"/> </td>
+    <td><select class="form-control" name="critere4">
+  <option value="1">Administrateur</option>
+  <option value="2">Utilisateur</option>
+</select>
     <input type='hidden' name='choix' value='$uneFormation->idEmploye'/>
     <td><button  class='btn btn-success' name='id' type='submit'><span class='glyphicon glyphicon-user'></span> Créer</button></td>
     </table>
      <?php
          if ($_SERVER['REQUEST_METHOD'] === 'POST') 
     {
-        if(isset($_POST['submit_p'])){ 
+        if(isset($_POST['id'])){ 
        
-var_dump($_POST['choix']);
           
-            ajoutuser($_POST['critere1'], $_POST['critere2'],$_POST['critere3']);
+            ajoutuser($_POST['critere1'], $_POST['critere2'],$_POST['critere3'],$_POST['critere4']);
            
             header('Location:useradmin.php');
     }}   
 
-  
- 
-   
-  
 ob_end_flush();       
 ?>
   </div>
